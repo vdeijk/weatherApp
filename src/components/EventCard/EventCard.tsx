@@ -11,9 +11,7 @@ interface EventCardProps {
 
 const EventCard: React.FC<EventCardProps> = observer(({ event, onSelect }) => (
   <div className={styles.card}>
-    <div className={styles.cardHeader}>
-      <span className={styles.eventName}>{event.name}</span>
-    </div>
+    <h3 className={styles.h3}>{event.name}</h3>
     <div className={styles.cardDetails}>
       <span className={styles.eventDate}>{event.date}</span>
       <span className={styles.eventTime}>{event.time}</span>
@@ -22,9 +20,7 @@ const EventCard: React.FC<EventCardProps> = observer(({ event, onSelect }) => (
     {event.description && (
       <div className={styles.eventDescription}>{event.description}</div>
     )}
-    <Button onClick={() => onSelect?.(event)}>
-      View on Map
-    </Button>
+    <Button onClick={() => onSelect?.(event)}>📍 View on Map</Button>
   </div>
 ));
 

@@ -1,11 +1,19 @@
 .eventsContainer {
   padding: 2rem;
+  background: var(--gradient-blue);
+  border-radius: var(--border-radius);
 }
 
-.title {
-  font-size: 2.2rem;
+.containerParent {
+  padding: 2rem;
+}
+
+.h1 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
   font-weight: 600;
-  margin-bottom: 2rem;
+  color: var(--color-accent);
+  font-size: 2.8rem;
   text-align: center;
 }
 
@@ -54,27 +62,4 @@
 .eventTime,
 .eventLocation {
   font-size: 1.1rem;
-}
-
-.eventDescription {
-  font-size: 1rem;
-  color: var(--color-text-secondary, #666);
-  margin-top: 0.5rem;
-}
-
-.selectBtn {
-  margin-top: 1rem;
-  padding: 0.7rem 1.2rem;
-  border-radius: 8px;
-  background: var(--color-accent-yellow, #ffeaa7);
-  color: var(--color-primary, #222);
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.selectBtn:hover {
-  background: var(--color-accent, #a29bfe);
-  color: #fff;
 }

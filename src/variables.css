@@ -6,7 +6,7 @@
   --color-accent-yellow: #f9f5d7;
   --color-label: #e0e6ef;
   --color-text: #222;
-  --color-input-bg: rgba(255, 255, 255, 0.2);
+  --color-text-subtle: #5a5a5a;
   --color-input-placeholder: rgba(255, 255, 255, 0.7);
   --gradient-page-bg: linear-gradient(135deg, #ffeaa7 0%, #a8e6ff 50%, #81ecec 100%);
   --color-form-bg: rgba(200, 230, 255, 0.92);

@@ -26,7 +26,7 @@ const InputPage: React.FC = observer(() => {
     <div className={styles["input-container"]}>
       <form onSubmit={handleSearch}>
         <div className={styles["search-form"]}>
-          <h1 className={styles.h1}>Search Weather</h1>
+          <h1 className={styles.h1}>Location & Date</h1>
           <TextInput
             value={inputStore.location}
             onChange={inputStore.setLocation}
@@ -41,7 +41,7 @@ const InputPage: React.FC = observer(() => {
         </div>
         <div className={styles.controlsCard}>
           <Button type="submit" className={styles["search-btn"]}>
-            🔍 Search
+            🔍 Get Forecast
           </Button>
         </div>
       </form>

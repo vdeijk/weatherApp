@@ -32,3 +32,19 @@
   flex-direction: column;
   align-items: center;
 }
+
+/* Leaflet tooltip styling for event markers */
+:global(.leaflet-tooltip) {
+  font-size: 1.5rem !important;
+  font-weight: 500 !important;
+  padding: 0.5rem 0.75rem !important;
+  background: var(--color-accent) !important;
+  border: 2px solid var(--color-primary) !important;
+  border-radius: 8px !important;
+  box-shadow: var(--box-shadow) !important;
+  margin-bottom: 20px !important;
+}
+
+:global(.leaflet-tooltip-top) {
+  margin-top: -20px !important;
+}

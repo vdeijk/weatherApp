@@ -7,9 +7,9 @@ const NavBar: React.FC = observer(() => (
   <nav className={styles.navbar}>
     <ul className={styles.menuList}>
       <NavLink to="/">Home</NavLink>
-      <NavLink to="/input">Search</NavLink>
-      <NavLink to="/map">View Map</NavLink>
-      <NavLink to="/events">Events</NavLink>
+      <NavLink to="/input">Location & Date</NavLink>
+      <NavLink to="/map">Map</NavLink>
+      <NavLink to="/events">Upcoming Events</NavLink>
       <NavLink to="/forecast">Forecast</NavLink>
     </ul>
   </nav>
