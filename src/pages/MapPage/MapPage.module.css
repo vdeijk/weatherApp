@@ -7,14 +7,16 @@
   width: 100%;
 }
 
-.mapPlaceholder {
-  width: 90vw;
-  max-width: 600px;
-  height: 400px;
-  background: rgba(255,255,255,0.2);
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 2rem;
+ .mapPlaceholder {
+   width: 90vw;
+   max-width: 600px;
+   height: 400px;
+   background: var(--color-form-bg);
+   border-radius: var(--border-radius);
+   box-shadow: var(--box-shadow);
+   padding: 2rem;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-top: 2rem;
 }

@@ -1,0 +1,15 @@
+.button {
+  padding: 1rem;
+  border: none;
+  border-radius: var(--border-radius-large);
+  background: var(--gradient-blue-reverse);
+  color: var(--color-accent);
+  font-size: 1.6rem;
+  font-weight: bold;
+  box-shadow: var(--var-shadow);
+  transition: all 3s;
+}
+
+.button:hover {
+  cursor: pointer;
+}

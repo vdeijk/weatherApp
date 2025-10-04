@@ -1,15 +1,14 @@
 import React from "react";
-import { observer } from "mobx-react-lite";
 import styles from "./MainPage.module.css";
 
-const MainPage: React.FC = observer(() => {
+const MainPage: React.FC = () => {
   return (
-    <div className={styles["main-container"]}>
-      <header className={styles.header}>
-        <h1>Weather App</h1>
-      </header>
+    <div className={styles.containerParent}>
+      <div className={styles.mainContainer}>
+        <h1 className={styles.h1}>Weather App</h1>
+      </div>
     </div>
   );
-});
+};
 
 export default MainPage;

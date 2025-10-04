@@ -1,1 +1,129 @@
 @import "../MainPage/MainPage.module.css";
+
+.h2 {
+  color: var(--color-accent);
+  font-size: 2.8rem;
+}
+
+.h3 {
+  font-size: 1.9rem;
+  text-align: center;
+  color: var(--color-text);
+  margin-bottom: 1rem;
+}
+
+.weather-content {
+  padding: 2rem;
+}
+
+.current-weather {
+  margin-bottom: 2rem;
+  background: var(--gradient-blue);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  backdrop-filter: blur(10px);
+}
+
+.temperature-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+}
+
+.weather-icon {
+  font-size: 4rem;
+}
+
+.temperature {
+  font-size: 3.6rem;
+  font-weight: 200;
+  color: var(--color-accent);
+}
+
+.condition {
+  margin: 0;
+  font-size: 1.8rem;
+  color: var(--color-label);
+}
+
+.details-section {
+  backdrop-filter: blur(10px);
+  display: grid;
+  gap: 1rem;
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  background: var(--color-form-bg);
+  box-shadow: var(--box-shadow);
+  margin-bottom: 2rem;
+}
+
+.weather-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+}
+
+.detail-card {
+  gap: 1rem;
+  background: var(--gradient-blue);
+  padding: 1rem 2rem;
+  backdrop-filter: blur(10px);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  display: grid;
+  grid-auto-flow: row;
+  align-items: center;
+}
+
+.detail-card.reverse {
+  background: var(--gradient-blue-reverse);
+}
+
+.detail-icon {
+  font-size: 3.2rem;
+}
+
+.detail-label {
+  margin: 0;
+  font-size: 1.6rem;
+  color: var(--color-label);
+}
+
+.detail-value {
+  color: var(--color-accent);
+  font-size: 1.7rem;
+  font-weight: 500;
+}
+
+.forecast-section {
+  backdrop-filter: blur(10px);
+  display: grid;
+  gap: 1rem;
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  background: var(--color-form-bg);
+  box-shadow: var(--box-shadow);
+}
+
+.forecast-list {
+  display: grid;
+  grid-gap: 1rem;
+}
+
+.forecast-item {
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  background: var(--gradient-blue);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 1rem 2rem;
+  justify-content: space-between;
+  color: var(--color-accent);
+  font-size: 1.6rem;
+}
+
+.forecast-item:last-child {
+  border-bottom: none;
+}

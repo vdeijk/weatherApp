@@ -1,0 +1,25 @@
+:root {
+  --color-background: #fdfdfd;
+  --color-primary: #0984e3;
+  --color-secondary: #74b9ff;
+  --color-accent: #fdfdfd;
+  --color-label: #e0e6ef;
+  --color-text: #222;
+  --color-input-bg: rgba(255, 255, 255, 0.2);
+  --color-input-placeholder: rgba(255, 255, 255, 0.7);
+  --gradient-page-bg: linear-gradient(135deg, #ffeaa7 0%, #a8e6ff 50%, #81ecec 100%);
+  --color-form-bg: rgba(200, 230, 255, 0.92);
+  --gradient-blue: linear-gradient(
+    90deg,
+    var(--color-primary) 0%,
+    var(--color-secondary) 100%
+  );
+  --gradient-blue-reverse: linear-gradient(
+    270deg,
+    var(--color-primary) 0%,
+    var(--color-secondary) 100%
+  );
+  --box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+  --border-radius: 18px;
+  --border-radius-large: 26px;
+}

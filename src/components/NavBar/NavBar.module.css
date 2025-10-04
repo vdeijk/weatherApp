@@ -1,6 +1,6 @@
 .navbar {
-  background: linear-gradient(90deg, #0984e3 0%, #74b9ff 100%);
-  padding: 1rem 0;
+  background: var(--gradient-blue-reverse);
+  padding: 1.5rem 0;
   display: flex;
   justify-content: center;
 }
@@ -14,7 +14,7 @@
 }
 
 .menuList li {
-  font-size: 1.1rem;
+  font-size: 1.6rem;
 }
 
 .menuList a {

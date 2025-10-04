@@ -1,0 +1,9 @@
+.dateInput {
+  padding: 1rem;
+  border: none;
+  border-radius: var(--border-radius-large);
+  background: var(--gradient-blue);
+  color: var(--color-accent);
+  font-size: 1.6rem;
+  box-shadow: var(--var-shadow);
+}

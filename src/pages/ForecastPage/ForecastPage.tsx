@@ -10,13 +10,12 @@ const ForecastPage: React.FC = observer(() => {
     <main className={styles["weather-content"]}>
       {currentWeather && (
         <div className={styles["current-weather"]}>
-          <div className={styles.location}>
-            <h2>{currentWeather.location}</h2>
-            {/* Date can be passed as a prop if needed */}
-          </div>
+          <h2 className={styles.h2}>{currentWeather.location}</h2>
 
           <div className={styles["temperature-display"]}>
-            <span className={styles["weather-icon"]}>{currentWeather.icon}</span>
+            <span className={styles["weather-icon"]}>
+              {currentWeather.icon}
+            </span>
             <span className={styles.temperature}>
               {currentWeather.temperature}
               {forecastStore.temperatureUnit}
@@ -28,20 +27,27 @@ const ForecastPage: React.FC = observer(() => {
       )}
 
       {currentWeather && (
-        <div className={styles["weather-details"]}>
-          <div className={styles["detail-card"]}>
-            <span className={styles["detail-icon"]}>💧</span>
-            <div>
-              <p className={styles["detail-label"]}>Humidity</p>
-              <p className={styles["detail-value"]}>{currentWeather.humidity}%</p>
+        <div className={styles["details-section"]}>
+          <h3 className={styles.h3}>3-Day Forecast</h3>
+          <div className={styles["weather-list"]}>
+            <div className={styles["detail-card"] + " " + styles["reverse"]}>
+              <span className={styles["detail-icon"]}>💧</span>
+              <div>
+                <p className={styles["detail-label"]}>Humidity</p>
+                <p className={styles["detail-value"]}>
+                  {currentWeather.humidity}%
+                </p>
+              </div>
             </div>
-          </div>
 
-          <div className={styles["detail-card"]}>
-            <span className={styles["detail-icon"]}>💨</span>
-            <div>
-              <p className={styles["detail-label"]}>Wind Speed</p>
-              <p className={styles["detail-value"]}>{currentWeather.windSpeed} km/h</p>
+            <div className={styles["detail-card"]}>
+              <span className={styles["detail-icon"]}>💨</span>
+              <div>
+                <p className={styles["detail-label"]}>Wind Speed</p>
+                <p className={styles["detail-value"]}>
+                  {currentWeather.windSpeed} km/h
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -49,11 +55,13 @@ const ForecastPage: React.FC = observer(() => {
 
       {forecast.length > 0 && (
         <div className={styles["forecast-section"]}>
-          <h3>5-Day Forecast</h3>
+          <h3 className={styles.h3}>5-Day Forecast</h3>
           <div className={styles["forecast-list"]}>
             {forecast.map((day, index) => (
               <div key={index} className={styles["forecast-item"]}>
-                <span>{day.date.toLocaleDateString("en", { weekday: "short" })}</span>
+                <span>
+                  {day.date.toLocaleDateString("en", { weekday: "short" })}
+                </span>
                 <span>{day.icon}</span>
                 <span>
                   {day.high}°/{day.low}°

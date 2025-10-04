@@ -1,6 +1,9 @@
 import React from "react";
 import { inputStore } from "../../states/inputStore";
 import { forecastStore } from "../../states/forecastStore";
+import TextInput from "../../components/TextInput/TextInput";
+import DateInput from "../../components/DateInput/DateInput";
+import Button from "../../components/Button/Button";
 import styles from "./InputPage.module.css";
 
 const InputPage: React.FC = () => {
@@ -14,22 +17,20 @@ const InputPage: React.FC = () => {
   return (
     <div className={styles["input-container"]}>
       <form onSubmit={handleSearch} className={styles["search-form"]}>
-        <input
-          type="text"
-          placeholder="Search city..."
+        <TextInput
           value={inputStore.location}
-          onChange={(e) => inputStore.setLocation(e.target.value)}
+          onChange={inputStore.setLocation}
+          placeholder="Search city..."
           className={styles["search-input"]}
         />
-        <input
-          type="date"
-          value={inputStore.date.toISOString().split("T")[0]}
-          onChange={(e) => inputStore.setDate(new Date(e.target.value))}
+        <DateInput
+          value={inputStore.date}
+          onChange={inputStore.setDate}
           className={styles["date-input"]}
         />
-        <button type="submit" className={styles["search-btn"]}>
-          🔍
-        </button>
+        <Button type="submit" className={styles["search-btn"]}>
+          🔍 Search
+        </Button>
       </form>
     </div>
   );
