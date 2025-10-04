@@ -4,6 +4,8 @@
 
 **FestivaCast** is a mobile-first weather forecasting application designed to help event organizers and attendees plan outdoor celebrations with confidence. Built for the [NASA Space Apps Challenge](https://www.spaceappschallenge.org/), this app combines interactive mapping, event management, and weather forecasting to ensure your festivals, concerts, marathons, and outdoor gatherings aren't rained out.
 
+## 🚀 [Try It Live](https://vdeijk.github.io/weatherApp/) | [GitHub Repository](https://github.com/vdeijk/weatherApp)
+
 ---
 
 ## 🌟 Problem Statement
@@ -60,6 +62,72 @@ Outdoor events—from music festivals to marathons—are heavily impacted by wea
 ---
 
 ## 🏗️ Architecture Highlights
+
+### System Architecture
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                         Browser                             │
+│  ┌───────────────────────────────────────────────────────┐  │
+│  │                    App.tsx (Router)                    │  │
+│  │                  ┌───────────────┐                     │  │
+│  │                  │  Layout.tsx   │                     │  │
+│  │                  │  (Navigation) │                     │  │
+│  │                  └───────┬───────┘                     │  │
+│  └──────────────────────────┼─────────────────────────────┘  │
+│                             │                                │
+│     ┌───────────────────────┼───────────────────────┐        │
+│     │                       │                       │        │
+│  ┌──▼──────┐  ┌──────▼──────┐  ┌──────▼──────┐  ┌─▼─────┐  │
+│  │ Input   │  │    Map      │  │   Events    │  │Forecast│  │
+│  │  Page   │  │    Page     │  │    Page     │  │  Page  │  │
+│  └──┬──────┘  └──────┬──────┘  └──────┬──────┘  └─┬──────┘  │
+│     │                │                │            │         │
+│     └────────────────┴────────┬───────┴────────────┘         │
+│                               │                               │
+│           ┌───────────────────▼────────────────┐             │
+│           │      MobX Stores (Observable)      │             │
+│           ├────────────────────────────────────┤             │
+│           │  inputStore    │  mapStore         │             │
+│           │  - location    │  - coordinates    │             │
+│           │  - date        │  - selectedEvent  │             │
+│           │  - validation  │  - eventMarkers   │             │
+│           ├────────────────┼───────────────────┤             │
+│           │ eventsStore    │  forecastStore    │             │
+│           │  - events[]    │  - weatherData    │             │
+│           │  - loading     │  - loading        │             │
+│           │  - error       │  - error          │             │
+│           └────────┬───────┴──────┬────────────┘             │
+│                    │              │                          │
+└────────────────────┼──────────────┼──────────────────────────┘
+                     │              │
+          ┌──────────▼──────┐  ┌────▼─────────┐
+          │   Geocoding     │  │   Weather    │
+          │   API Service   │  │  API Service │
+          │ (Nominatim OSM) │  │  (Mock Data) │
+          └─────────────────┘  └──────────────┘
+```
+
+### Data Flow
+
+**Event Selection Flow:**
+```
+User clicks event card
+    │
+    ▼
+eventsStore → mapStore.selectEvent(id, coords)
+    │
+    ├──▶ mapStore.selectedEventId = id
+    ├──▶ mapStore.location = coords
+    └──▶ inputStore.location = eventName
+    │
+    ▼
+Observer pattern triggers re-render
+    │
+    ├──▶ EventCard shows red border
+    ├──▶ Map re-centers to event
+    └──▶ Event pin turns red
+```
 
 ### MobX Store Pattern
 The app uses four specialized MobX stores for reactive state management:
@@ -277,12 +345,44 @@ FestivaCast was created for the NASA Space Apps Challenge to address the challen
 - [ ] Add historical weather patterns for event date selection
 - [ ] Implement weather alerts with push notifications
 - [ ] Add social sharing (export forecast as image)
-- [ ] Multi-language support (i18n)
-- [ ] Dark mode toggle
-- [ ] Progressive Web App (PWA) with offline support
-- [ ] Weather data visualization charts (temperature trends, precipitation)
-- [ ] User accounts and saved events
-- [ ] Email notifications for weather changes
+## 🚀 Future Roadmap
+
+### Phase 1: Enhanced Weather Intelligence (High Priority)
+- [ ] **NASA POWER API Integration** – Replace mock data with real NASA satellite weather data
+  - Historical weather analysis
+  - Solar irradiance data for outdoor events
+  - Climate projections for long-term event planning
+- [ ] **Advanced Weather Alerts** – Push notifications for severe weather warnings
+- [ ] **Multi-day Forecasts** – Extended 7-14 day weather predictions
+- [ ] **Weather Data Visualization** – Interactive charts showing temperature trends, precipitation probability, wind patterns
+
+### Phase 2: User Experience & Personalization (Medium Priority)
+- [ ] **User Accounts & Saved Events** – Personal event calendars and preferences
+- [ ] **Email Notifications** – Automated weather updates for saved events
+- [ ] **Custom Weather Thresholds** – Set alerts based on user-defined conditions (e.g., "notify if rain > 50%")
+- [ ] **Dark Mode Toggle** – Reduce eye strain for nighttime planning
+- [ ] **Multi-language Support (i18n)** – Reach global event organizers
+
+### Phase 3: Advanced Features (Future Vision)
+- [ ] **Progressive Web App (PWA)** – Offline support and mobile app-like experience
+- [ ] **Social Sharing** – Export weather reports as images/PDFs for social media
+- [ ] **Event Weather Comparison** – Side-by-side comparison of weather for multiple dates/locations
+- [ ] **Historical Weather Analysis** – Show past weather for recurring annual events
+- [ ] **API for Event Platforms** – Integrate FestivaCast into Eventbrite, Meetup, etc.
+- [ ] **Machine Learning Predictions** – AI-powered recommendations for optimal event timing
+
+### Phase 4: Community & Scale
+- [ ] **Public Event Database** – Community-submitted events with weather forecasts
+- [ ] **Event Organizer Dashboard** – Analytics on weather impacts for past events
+- [ ] **Mobile Native Apps** – iOS and Android versions
+- [ ] **Enterprise Features** – Premium features for large-scale event management companies
+
+### Near-Term Priorities (Next Sprint)
+1. Deploy to production (GitHub Pages)
+2. Integrate NASA POWER API for real weather data
+3. Add weather data visualization charts
+4. Implement PWA functionality
+5. User testing and feedback collection
 
 ---
 

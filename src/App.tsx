@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import MainPage from "./pages/MainPage/MainPage";
 import Layout from "./components/Layout/Layout";
 import InputPage from "./pages/InputPage/InputPage";
@@ -19,6 +19,7 @@ const App: React.FC = () => {
           <Route path="/map" element={<MapPage />} />
           <Route path="/forecast" element={<ForecastPage />} />
           <Route path="/events" element={<EventsPage />} />
+          {/* Catch-all route for 404 Not Found */}
           <Route
             path="*"
             element={
