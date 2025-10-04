@@ -1,16 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { observer } from "mobx-react-lite";
+import NavLink from "../NavLink/NavLink";
 import styles from "./NavBar.module.css";
 
-const NavBar: React.FC = () => (
+const NavBar: React.FC = observer(() => (
   <nav className={styles.navbar}>
     <ul className={styles.menuList}>
-      <li><Link to="/">Home</Link></li>
-      <li><Link to="/input">Input</Link></li>
-      <li><Link to="/map">Map</Link></li>
-      <li><Link to="/forecast">Forecast</Link></li>
+      <NavLink to="/">Home</NavLink>
+      <NavLink to="/input">Input</NavLink>
+      <NavLink to="/map">Map</NavLink>
+      <NavLink to="/forecast">Forecast</NavLink>
     </ul>
   </nav>
-);
+));
 
 export default NavBar;
