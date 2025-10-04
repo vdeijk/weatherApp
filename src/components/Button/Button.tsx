@@ -7,6 +7,8 @@ interface ButtonProps {
   className?: string;
   children: React.ReactNode;
   disableHover?: boolean;
+  ariaLabel?: string;
+  disabled?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -15,6 +17,8 @@ const Button: React.FC<ButtonProps> = ({
   className,
   children,
   disableHover = false,
+  ariaLabel,
+  disabled = false,
 }) => {
   const buttonClass = [
     styles.button,
@@ -27,6 +31,8 @@ const Button: React.FC<ButtonProps> = ({
       type={type}
       onClick={onClick}
       className={buttonClass}
+      aria-label={ariaLabel}
+      disabled={disabled}
     >
       {children}
     </button>

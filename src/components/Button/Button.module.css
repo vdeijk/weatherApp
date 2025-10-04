@@ -16,6 +16,22 @@
   box-shadow: 0 6px 32px rgba(0, 0, 0, 0.18);
 }
 
+.button:focus-visible {
+  outline: 3px solid var(--color-red);
+  outline-offset: 3px;
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.button:disabled:hover {
+  transform: none;
+  box-shadow: var(--box-shadow);
+}
+
 .button.noHover:hover {
   transform: none;
   box-shadow: var(--box-shadow);

@@ -6,13 +6,17 @@ interface DateInputProps {
   value: Date;
   onChange: (value: Date) => void;
   className?: string;
+  ariaLabel?: string;
+  id?: string;
 }
 
-const DateInput: React.FC<DateInputProps> = observer(({ value, onChange, className }) => (
+const DateInput: React.FC<DateInputProps> = observer(({ value, onChange, className, ariaLabel, id }) => (
   <input
     type="date"
+    id={id}
     value={value.toISOString().split("T")[0]}
     onChange={e => onChange(new Date(e.target.value))}
+    aria-label={ariaLabel || "Select event date"}
     className={className ? className + " " + styles.dateInput : styles.dateInput}
   />
 ));

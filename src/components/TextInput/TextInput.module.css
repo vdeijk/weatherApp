@@ -9,5 +9,10 @@
 }
 
 .textInput::placeholder {
-  color: var(--color-label);
+  color: var(--color-text-subtle);
+}
+
+.textInput:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
 }

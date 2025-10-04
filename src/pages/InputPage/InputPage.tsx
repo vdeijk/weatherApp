@@ -24,23 +24,37 @@ const InputPage: React.FC = observer(() => {
 
   return (
     <div className={styles["input-container"]}>
-      <form onSubmit={handleSearch}>
+      <form onSubmit={handleSearch} aria-label="Weather forecast search form">
         <div className={styles["search-form"]}>
           <h1 className={styles.h1}>Location & Date</h1>
+          <label htmlFor="location-input" className={styles.visuallyHidden}>
+            City or location name
+          </label>
           <TextInput
+            id="location-input"
             value={inputStore.location}
             onChange={inputStore.setLocation}
             placeholder="Search city..."
+            ariaLabel="Enter city or location name"
             className={styles["search-input"]}
           />
+          <label htmlFor="date-input" className={styles.visuallyHidden}>
+            Event date
+          </label>
           <DateInput
+            id="date-input"
             value={inputStore.date}
             onChange={inputStore.setDate}
+            ariaLabel="Select event date"
             className={styles["date-input"]}
           />
         </div>
         <div className={styles.controlsCard}>
-          <Button type="submit" className={styles["search-btn"]}>
+          <Button 
+            type="submit" 
+            className={styles["search-btn"]}
+            ariaLabel="Get weather forecast for selected location and date"
+          >
             🔍 Get Forecast
           </Button>
         </div>

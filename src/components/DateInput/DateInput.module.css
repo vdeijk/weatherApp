@@ -7,3 +7,8 @@
   font-size: 1.6rem;
   box-shadow: var(--var-shadow);
 }
+
+.dateInput:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}

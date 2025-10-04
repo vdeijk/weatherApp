@@ -133,7 +133,7 @@ const MapPage: React.FC = observer(() => {
         </MapContainer>
       </div>
       <div className={styles.controlsCard}>
-        <Button onClick={handleCenter}>🎯 Center</Button>
+        <Button onClick={handleCenter} ariaLabel="Center map on selected location">🎯 Center</Button>
       </div>
     </div>
   );

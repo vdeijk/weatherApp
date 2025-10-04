@@ -16,7 +16,12 @@ const NavLink: React.FC<NavLinkProps> = ({ className, children, to, ...props }) 
     (isActive ? " " + styles.active : "");
   return (
     <li>
-      <RouterLink className={linkClass} to={to} {...props}>
+      <RouterLink 
+        className={linkClass} 
+        to={to} 
+        aria-current={isActive ? "page" : undefined}
+        {...props}
+      >
         {children}
       </RouterLink>
     </li>

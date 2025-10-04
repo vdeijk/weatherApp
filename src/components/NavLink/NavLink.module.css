@@ -7,7 +7,12 @@
   transition: all 0.2s;
 }
 
- .navLink:hover, .navLink.active {
-   background: var(--color-accent);
-   color: var(--color-red);
+.navLink:hover, .navLink.active {
+  background: var(--color-accent);
+  color: var(--color-red);
+}
+
+.navLink:focus-visible {
+  outline: 3px solid var(--color-red);
+  outline-offset: 2px;
 }

@@ -8,8 +8,13 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => (
   <div className={styles.layoutContainer}>
+    <a href="#main-content" className={styles.skipLink}>
+      Skip to main content
+    </a>
     <NavBar />
-    <main className={styles.mainContent}>{children}</main>
+    <main id="main-content" className={styles.mainContent} role="main">
+      {children}
+    </main>
   </div>
 );
 
