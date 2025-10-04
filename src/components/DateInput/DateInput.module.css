@@ -1,9 +1,9 @@
 .dateInput {
-  padding: 1rem;
-  border: none;
+  padding: 1rem 2rem;
   border-radius: var(--border-radius-large);
-  background: var(--gradient-blue);
-  color: var(--color-accent);
+  border: none;
+  background: var(--color-form-bg);
+  color: var(--color-text);
   font-size: 1.6rem;
   box-shadow: var(--var-shadow);
 }

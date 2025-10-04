@@ -24,21 +24,26 @@ const InputPage: React.FC = observer(() => {
 
   return (
     <div className={styles["input-container"]}>
-      <form onSubmit={handleSearch} className={styles["search-form"]}>
-        <TextInput
-          value={inputStore.location}
-          onChange={inputStore.setLocation}
-          placeholder="Search city..."
-          className={styles["search-input"]}
-        />
-        <DateInput
-          value={inputStore.date}
-          onChange={inputStore.setDate}
-          className={styles["date-input"]}
-        />
-        <Button type="submit" className={styles["search-btn"]}>
-          🔍 Search
-        </Button>
+      <form onSubmit={handleSearch}>
+        <div className={styles["search-form"]}>
+          <h1 className={styles.h1}>Search Weather</h1>
+          <TextInput
+            value={inputStore.location}
+            onChange={inputStore.setLocation}
+            placeholder="Search city..."
+            className={styles["search-input"]}
+          />
+          <DateInput
+            value={inputStore.date}
+            onChange={inputStore.setDate}
+            className={styles["date-input"]}
+          />
+        </div>
+        <div className={styles.controlsCard}>
+          <Button type="submit" className={styles["search-btn"]}>
+            🔍 Search
+          </Button>
+        </div>
       </form>
     </div>
   );

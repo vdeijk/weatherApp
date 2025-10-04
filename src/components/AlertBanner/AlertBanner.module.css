@@ -1,0 +1,40 @@
+.banner {
+  position: static;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  font-size: 2.2rem;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border-radius: 0 0 12px 12px;
+  transition: transform 0.3s;
+}
+
+.icon {
+  margin-right: 1rem;
+  font-size: 3rem;
+}
+
+.message {
+  flex: 1;
+}
+
+.info {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.warning {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.error {
+  background: #f8d7da;
+  color: #721c24;
+}

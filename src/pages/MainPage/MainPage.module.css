@@ -1,3 +1,11 @@
+.heroImg {
+  width: 100%;
+  max-height: 260px;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+  margin-bottom: 2rem;
+  box-shadow: var(--box-shadow);
+}
 .containerParent {
   padding: 2rem;
 }
@@ -16,4 +24,11 @@
   color: var(--color-accent);
   font-size: 2.8rem;
   text-align: center;
+}
+
+.h3 {
+  font-size: 1.9rem;
+  text-align: center;
+  color: var(--color-accent);
+  margin-bottom: 1rem;
 }

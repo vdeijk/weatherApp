@@ -8,6 +8,6 @@
 }
 
  .navLink:hover, .navLink.active {
-   background: var(--color-accent-yellow);
+   background: var(--color-accent);
    color: var(--color-primary);
 }

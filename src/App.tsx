@@ -9,6 +9,7 @@ import ErrorPage from "./pages/ErrorPage/Errorpage";
 import { observer } from "mobx-react-lite";
 import { forecastStore } from "./states/forecastStore";
 import ForecastPage from "./pages/ForecastPage/ForecastPage";
+import EventsPage from "./pages/EventsPage/EventsPage";
 
 const App: React.FC = observer(() => {
   if (forecastStore.loading) {
@@ -26,6 +27,7 @@ const App: React.FC = observer(() => {
           <Route path="/input" element={<InputPage />} />
           <Route path="/map" element={<MapPage />} />
           <Route path="/forecast" element={<ForecastPage />} />
+          <Route path="/events" element={<EventsPage />} />
         </Routes>
       </Layout>
     </Router>

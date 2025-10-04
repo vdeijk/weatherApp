@@ -73,6 +73,7 @@ const MapPage: React.FC = observer(() => {
   return (
     <div className={styles.mapContainer}>
       <div className={styles.mapPlaceholder} style={{ width: "100%", height: "400px", borderRadius: "var(--border-radius)", overflow: "hidden" }}>
+        <h1 className={styles.h1}>Map</h1>
         <MapContainer
           center={[mapStore.location.lat, mapStore.location.lng]}
           zoom={8}

@@ -1,4 +1,5 @@
 import React from "react";
+import AlertBanner from "../../components/AlertBanner/AlertBanner";
 import { observer } from "mobx-react-lite";
 import { forecastStore } from "../../states/forecastStore";
 import styles from "./ForecastPage.module.css";
@@ -7,7 +8,9 @@ const ForecastPage: React.FC = observer(() => {
   const { currentWeather, forecast } = forecastStore;
 
   return (
-    <main className={styles["weather-content"]}>
+    <>
+      <AlertBanner message="Heavy rain expected." type="warning" />
+      <main className={styles["weather-content"]}>
       {currentWeather && (
         <div className={styles["current-weather"]}>
           <h2 className={styles.h2}>{currentWeather.location}</h2>
@@ -72,6 +75,7 @@ const ForecastPage: React.FC = observer(() => {
         </div>
       )}
     </main>
+    </>
   );
 });
 

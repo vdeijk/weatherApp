@@ -12,7 +12,7 @@ export async function reverseGeocode(lat: number, lng: number): Promise<string |
       return data.address.town || data.address.village;
     }
     return null;
-  } catch (error) {
+  } catch (error) { 
     console.error("Reverse geocoding error:", error);
     return null;
   }
