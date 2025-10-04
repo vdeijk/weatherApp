@@ -6,6 +6,7 @@ interface ButtonProps {
   onClick?: () => void;
   className?: string;
   children: React.ReactNode;
+  disableHover?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -13,14 +14,23 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   className,
   children,
-}) => (
-  <button
-    type={type}
-    onClick={onClick}
-    className={className ? className + " " + styles.button : styles.button}
-  >
-    {children}
-  </button>
-);
+  disableHover = false,
+}) => {
+  const buttonClass = [
+    styles.button,
+    disableHover && styles.noHover,
+    className
+  ].filter(Boolean).join(' ');
+
+  return (
+    <button
+      type={type}
+      onClick={onClick}
+      className={buttonClass}
+    >
+      {children}
+    </button>
+  );
+};
 
 export default Button;

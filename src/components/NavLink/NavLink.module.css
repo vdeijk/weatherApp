@@ -3,11 +3,11 @@
   text-decoration: none;
   font-weight: 500;
   padding: 0.5rem 1rem;
-  border-radius: 8px;
-  transition: background 0.2s, color 0.2s;
+  border-radius: var(--border-radius);
+  transition: all 0.2s;
 }
 
  .navLink:hover, .navLink.active {
    background: var(--color-accent);
-   color: var(--color-primary);
+   color: var(--color-red);
 }

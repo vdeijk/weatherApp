@@ -15,3 +15,9 @@
   transform: translateY(-2px) scale(1.02);
   box-shadow: 0 6px 32px rgba(0, 0, 0, 0.18);
 }
+
+.button.noHover:hover {
+  transform: none;
+  box-shadow: var(--box-shadow);
+  cursor: default;
+}

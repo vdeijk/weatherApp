@@ -30,7 +30,7 @@ const EventCard: React.FC<EventCardProps> = observer(({ event }) => {
       {event.description && (
         <div className={styles.eventDescription}>{event.description}</div>
       )}
-      <Button>📍 Select Event</Button>
+      <Button disableHover>📍 Select Event</Button>
     </div>
   );
 });
