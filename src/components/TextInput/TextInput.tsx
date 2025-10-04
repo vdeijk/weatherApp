@@ -1,4 +1,5 @@
 import React from "react";
+import { observer } from "mobx-react-lite";
 import styles from "./TextInput.module.css";
 
 interface TextInputProps {
@@ -8,7 +9,7 @@ interface TextInputProps {
   className?: string;
 }
 
-const TextInput: React.FC<TextInputProps> = ({ value, onChange, placeholder, className }) => (
+const TextInput: React.FC<TextInputProps> = observer(({ value, onChange, placeholder, className }) => (
   <input
     type="text"
     value={value}
@@ -16,6 +17,6 @@ const TextInput: React.FC<TextInputProps> = ({ value, onChange, placeholder, cla
     placeholder={placeholder}
     className={className ? className + " " + styles.textInput : styles.textInput}
   />
-);
+));
 
 export default TextInput;

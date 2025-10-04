@@ -1,15 +1,23 @@
 import React from "react";
+import { observer } from "mobx-react-lite";
 import { inputStore } from "../../states/inputStore";
+import { mapStore } from "../../states/mapStore";
+import { geocodeCity } from "../../utils/geocode";
 import { forecastStore } from "../../states/forecastStore";
 import TextInput from "../../components/TextInput/TextInput";
 import DateInput from "../../components/DateInput/DateInput";
 import Button from "../../components/Button/Button";
 import styles from "./InputPage.module.css";
 
-const InputPage: React.FC = () => {
-  const handleSearch = (e: React.FormEvent) => {
+const InputPage: React.FC = observer(() => {
+  const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
     if (inputStore.isLocationValid) {
+      // Geocode city and update mapStore
+      const coords = await geocodeCity(inputStore.location);
+      if (coords) {
+        mapStore.setLocation(coords);
+      }
       forecastStore.fetchWeatherData(inputStore.location, inputStore.date);
     }
   };
@@ -34,6 +42,6 @@ const InputPage: React.FC = () => {
       </form>
     </div>
   );
-};
+});
 
 export default InputPage;

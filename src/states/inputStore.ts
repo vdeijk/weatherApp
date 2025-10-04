@@ -1,7 +1,6 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
 
 class InputStore {
-  // Observable state
   location = "";
   date = new Date();
 
@@ -9,19 +8,24 @@ class InputStore {
     makeAutoObservable(this);
   }
 
-  // Actions
-  setLocation(location: string) {
-    this.location = location;
+  setLocation = (location: string) => {
+    runInAction(() => {
+      console.log("location set to:", location);
+      this.location = location;
+    });
   }
 
-  setDate(date: Date) {
-    this.date = date;
+  setDate = (date: Date) => {
+    runInAction(() => {
+      this.date = date;
+    });
   }
 
-  // Clear inputs
-  clearInputs() {
-    this.location = "";
-    this.date = new Date();
+  clearInputs = () => {
+    runInAction(() => {
+      this.location = "";
+      this.date = new Date();
+    });
   }
 
   // Computed values
@@ -42,5 +46,4 @@ class InputStore {
   }
 }
 
-// Create and export store instance
 export const inputStore = new InputStore();
