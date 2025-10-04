@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MainPage from "./pages/MainPage/MainPage";
-import Layout from "./components/Layout";
+import Layout from "./components/Layout/Layout";
 import InputPage from "./pages/InputPage/InputPage";
 import MapPage from "./pages/MapPage/MapPage";
 import LoadingPage from "./pages/LoadingPage/LoadingPage";
@@ -19,48 +19,15 @@ const App: React.FC = observer(() => {
   }
   return (
     <Router>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Layout>
-              <MainPage />
-            </Layout>
-          }
-        />
-        <Route
-          path="/main"
-          element={
-            <Layout>
-              <MainPage />
-            </Layout>
-          }
-        />
-        <Route
-          path="/input"
-          element={
-            <Layout>
-              <InputPage />
-            </Layout>
-          }
-        />
-        <Route
-          path="/map"
-          element={
-            <Layout>
-              <MapPage />
-            </Layout>
-          }
-        />
-        <Route
-          path="/forecast"
-          element={
-            <Layout>
-              <ForecastPage />
-            </Layout>
-          }
-        />
-      </Routes>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/main" element={<MainPage />} />
+          <Route path="/input" element={<InputPage />} />
+          <Route path="/map" element={<MapPage />} />
+          <Route path="/forecast" element={<ForecastPage />} />
+        </Routes>
+      </Layout>
     </Router>
   );
 });
