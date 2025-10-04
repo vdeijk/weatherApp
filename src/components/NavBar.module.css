@@ -1,0 +1,30 @@
+.navbar {
+  background: linear-gradient(90deg, #0984e3 0%, #74b9ff 100%);
+  padding: 1rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.menuList {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.menuList li {
+  font-size: 1.1rem;
+}
+
+.menuList a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.menuList a:hover {
+  background: rgba(255,255,255,0.2);
+}
