@@ -6,6 +6,7 @@ import InputPage from "./pages/InputPage/InputPage";
 import MapPage from "./pages/MapPage/MapPage";
 import ForecastPage from "./pages/ForecastPage/ForecastPage";
 import EventsPage from "./pages/EventsPage/EventsPage";
+import ErrorPage from "./pages/ErrorPage/Errorpage";
 
 const App: React.FC = () => {
   return (
@@ -18,6 +19,12 @@ const App: React.FC = () => {
           <Route path="/map" element={<MapPage />} />
           <Route path="/forecast" element={<ForecastPage />} />
           <Route path="/events" element={<EventsPage />} />
+          <Route
+            path="*"
+            element={
+              <ErrorPage error="Page not found. Please use the navigation above." />
+            }
+          />
         </Routes>
       </Layout>
     </Router>
