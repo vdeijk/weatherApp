@@ -11,7 +11,7 @@ class ForecastStore {
 
   constructor() {
     makeAutoObservable(this);
-    this.fetchWeatherData();
+    // Don't fetch weather data automatically - wait for user input
   }
 
   setLoading(loading: boolean) {

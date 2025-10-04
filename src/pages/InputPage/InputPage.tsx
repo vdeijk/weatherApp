@@ -12,14 +12,18 @@ import styles from "./InputPage.module.css";
 const InputPage: React.FC = observer(() => {
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (inputStore.isLocationValid) {
-      // Geocode city and update mapStore
-      const coords = await geocodeCity(inputStore.location);
-      if (coords) {
-        mapStore.setLocation(coords);
-      }
-      forecastStore.fetchWeatherData(inputStore.location, inputStore.date);
+    
+    // Validate all inputs
+    if (!inputStore.validateAll()) {
+      return; // Stop if validation fails
     }
+
+    // Geocode city and update mapStore
+    const coords = await geocodeCity(inputStore.location);
+    if (coords) {
+      mapStore.setLocation(coords);
+    }
+    forecastStore.fetchWeatherData(inputStore.location, inputStore.date);
   };
 
   return (
@@ -38,6 +42,11 @@ const InputPage: React.FC = observer(() => {
             ariaLabel="Enter city or location name"
             className={styles["search-input"]}
           />
+          {inputStore.locationError && (
+            <div className={styles.errorMessage} role="alert">
+              {inputStore.locationError}
+            </div>
+          )}
           <label htmlFor="date-input" className={styles.visuallyHidden}>
             Event date
           </label>
@@ -48,14 +57,20 @@ const InputPage: React.FC = observer(() => {
             ariaLabel="Select event date"
             className={styles["date-input"]}
           />
+          {inputStore.dateError && (
+            <div className={styles.errorMessage} role="alert">
+              {inputStore.dateError}
+            </div>
+          )}
         </div>
         <div className={styles.controlsCard}>
           <Button 
             type="submit" 
             className={styles["search-btn"]}
             ariaLabel="Get weather forecast for selected location and date"
+            disabled={forecastStore.loading || !inputStore.isFormValid}
           >
-            🔍 Get Forecast
+            {forecastStore.loading ? "⏳ Loading..." : "🔍 Get Forecast"}
           </Button>
         </div>
       </form>

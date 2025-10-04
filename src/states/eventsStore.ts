@@ -12,7 +12,12 @@ export interface Event {
 }
 
 class EventsStore {
-  events: Event[] = [
+  events: Event[] = [];
+  loading = false;
+  error: string | null = null;
+  
+  // Mock event data
+  private mockEvents: Event[] = [
     {
       id: "1",
       name: "Global Music Festival",
@@ -67,6 +72,41 @@ class EventsStore {
 
   constructor() {
     makeAutoObservable(this);
+    // Fetch events on initialization
+    this.fetchEvents();
+  }
+
+  setLoading(loading: boolean) {
+    this.loading = loading;
+  }
+
+  setError(error: string | null) {
+    this.error = error;
+  }
+
+  setEvents(events: Event[]) {
+    this.events = events;
+  }
+
+  async fetchEvents() {
+    this.setLoading(true);
+    this.setError(null);
+
+    try {
+      // Simulate API call with delay
+      await new Promise((resolve) => setTimeout(resolve, 800));
+      
+      // In production, replace with actual API call:
+      // const response = await fetch('/api/events');
+      // const data = await response.json();
+      
+      this.setEvents(this.mockEvents);
+    } catch (error) {
+      this.setError("Failed to load events");
+      console.error("Events fetch error:", error);
+    } finally {
+      this.setLoading(false);
+    }
   }
 
   get upcomingEvents() {

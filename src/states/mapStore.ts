@@ -16,12 +16,14 @@ export interface MapMarker {
 
 class MapStore {
   location: Coordinates = { lat: 52.3676, lng: 4.9041 };
-  selectedEventId: string | null = null;
+  selectedEventId: string | null = "1"; // Default to first event (Amsterdam)
 
   constructor() {
     makeAutoObservable(this);
-    // Set Amsterdam as initial location
+    // Set Amsterdam as initial location (matches first event)
     this.location = { lat: 52.3676, lng: 4.9041 };
+    // Select the first event by default
+    this.selectedEventId = "1";
   }
 
   setLocation = (coords: Coordinates, clearEvent: boolean = true) => {
