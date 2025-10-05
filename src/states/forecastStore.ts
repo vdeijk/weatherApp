@@ -46,7 +46,7 @@ class ForecastStore {
     this.setError(null);
 
     try {
-      const config = new Configuration({ basePath: "http://localhost:5002" });
+  const config = new Configuration({ basePath: import.meta.env.VITE_API_BASE_URL });
       const weatherApi = new WeatherApi(config);
       const latitude = mapStore.location.lat;
       const longitude = mapStore.location.lng;
