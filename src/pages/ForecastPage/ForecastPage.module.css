@@ -96,37 +96,6 @@
   font-weight: 500;
 }
 
-.forecast-section {
-  backdrop-filter: blur(10px);
-  display: grid;
-  gap: 1rem;
-  padding: 2rem;
-  border-radius: var(--border-radius);
-  background: var(--color-form-bg);
-  box-shadow: var(--box-shadow);
-}
-
-.forecast-list {
-  display: grid;
-  grid-gap: 1rem;
-}
-
-.forecast-item {
-  display: grid;
-  grid-auto-flow: column;
-  align-items: center;
-  background: var(--gradient-blue);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-  padding: 1rem 2rem;
-  justify-content: space-between;
-  color: var(--color-accent);
-  font-size: 1.6rem;
-}
-
-.forecast-item:last-child {
-  border-bottom: none;
-}
 
 /* Loading state styles */
 .loading-container {

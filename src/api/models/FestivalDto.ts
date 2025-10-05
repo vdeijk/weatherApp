@@ -21,10 +21,10 @@ import { mapValues } from '../runtime';
 export interface FestivalDto {
     /**
      * 
-     * @type {number}
+     * @type {string}
      * @memberof FestivalDto
      */
-    id?: number;
+    id?: string | null;
     /**
      * 
      * @type {string}
@@ -42,7 +42,31 @@ export interface FestivalDto {
      * @type {string}
      * @memberof FestivalDto
      */
+    time?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof FestivalDto
+     */
     location?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof FestivalDto
+     */
+    lat?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof FestivalDto
+     */
+    lng?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof FestivalDto
+     */
+    description?: string | null;
 }
 
 /**
@@ -65,7 +89,11 @@ export function FestivalDtoFromJSONTyped(json: any, ignoreDiscriminator: boolean
         'id': json['id'] == null ? undefined : json['id'],
         'name': json['name'] == null ? undefined : json['name'],
         'date': json['date'] == null ? undefined : json['date'],
+        'time': json['time'] == null ? undefined : json['time'],
         'location': json['location'] == null ? undefined : json['location'],
+        'lat': json['lat'] == null ? undefined : json['lat'],
+        'lng': json['lng'] == null ? undefined : json['lng'],
+        'description': json['description'] == null ? undefined : json['description'],
     };
 }
 
@@ -83,7 +111,11 @@ export function FestivalDtoToJSONTyped(value?: FestivalDto | null, ignoreDiscrim
         'id': value['id'],
         'name': value['name'],
         'date': value['date'],
+        'time': value['time'],
         'location': value['location'],
+        'lat': value['lat'],
+        'lng': value['lng'],
+        'description': value['description'],
     };
 }
 

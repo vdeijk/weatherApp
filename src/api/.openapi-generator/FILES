@@ -6,5 +6,6 @@ index.ts
 models/FestivalDto.ts
 models/ProblemDetails.ts
 models/WeatherDataDto.ts
+models/WeatherWarning.ts
 models/index.ts
 runtime.ts

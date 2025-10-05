@@ -23,7 +23,7 @@ const InputPage: React.FC = observer(() => {
     if (coords) {
       mapStore.setLocation(coords);
     }
-    forecastStore.fetchWeatherData(inputStore.location, inputStore.date);
+    forecastStore.fetchWeatherData(inputStore.date);
   };
 
   return (

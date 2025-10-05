@@ -1,15 +1,38 @@
 import React from "react";
+import { WeatherWarning } from "../../api/models/WeatherWarning";
 import AlertBanner from "../../components/AlertBanner/AlertBanner";
 import { observer } from "mobx-react-lite";
 import { forecastStore } from "../../states/forecastStore";
+import { inputStore } from "../../states/inputStore";
+import { mapStore } from "../../states/mapStore";
+import { eventsStore } from "../../states/eventsStore";
 import styles from "./ForecastPage.module.css";
 
 const ForecastPage: React.FC = observer(() => {
-  const { currentWeather, forecast, loading } = forecastStore;
+  // Map WeatherWarning enum to messages
+  const warningMessages: Record<number, string> = {
+    [WeatherWarning.NUMBER_0]: "No warning",
+    [WeatherWarning.NUMBER_1]: "Heavy rain expected.",
+    [WeatherWarning.NUMBER_2]: "Storm warning.",
+    [WeatherWarning.NUMBER_3]: "Extreme heat warning.",
+  };
+  const { currentWeather, loading } = forecastStore;
+
+  // Determine location to display
+  let locationLabel = "Unknown location";
+  const selectedEvent = eventsStore.events.find(e => e.id === mapStore.selectedEventId);
+  if (selectedEvent?.name) {
+    locationLabel = selectedEvent.name;
+  } else if (inputStore.location && inputStore.location.trim() !== "") {
+    locationLabel = inputStore.location;
+  }
+
 
   return (
     <>
-      {currentWeather && <AlertBanner message="Heavy rain expected." type="warning" />}
+      {typeof currentWeather?.warning === "number" && currentWeather.warning !== WeatherWarning.NUMBER_0 && (
+        <AlertBanner message={warningMessages[currentWeather.warning]} type="warning" />
+      )}
       <main className={styles["weather-content"]}>
         {loading && (
           <div className={styles["loading-container"]}>
@@ -31,11 +54,11 @@ const ForecastPage: React.FC = observer(() => {
         {!loading && currentWeather && (
           <>
             <div className={styles["current-weather"]}>
-              <h2 className={styles.h2}>{currentWeather.location}</h2>
+              <h2 className={styles.h2}>{locationLabel}</h2>
 
               <div className={styles["temperature-display"]}>
                 <span className={styles["weather-icon"]}>
-                  {currentWeather.icon}
+                  {forecastStore.getWeatherIcon(currentWeather.condition as string)}
                 </span>
                 <span className={styles.temperature}>
                   {currentWeather.temperature}
@@ -43,11 +66,10 @@ const ForecastPage: React.FC = observer(() => {
                 </span>
               </div>
 
-              <p className={styles.condition}>{currentWeather.condition}</p>
             </div>
 
             <div className={styles["details-section"]}>
-              <h3 className={styles.h3}>3-Day Forecast</h3>
+              <h3 className={styles.h3}>Today's Weather</h3>
               <div className={styles["weather-list"]}>
                 <div className={styles["detail-card"] + " " + styles["reverse"]}>
                   <span className={styles["detail-icon"]}>💧</span>
@@ -70,25 +92,6 @@ const ForecastPage: React.FC = observer(() => {
                 </div>
               </div>
             </div>
-
-            {forecast.length > 0 && (
-              <div className={styles["forecast-section"]}>
-                <h3 className={styles.h3}>5-Day Forecast</h3>
-                <div className={styles["forecast-list"]}>
-                  {forecast.map((day, index) => (
-                    <div key={index} className={styles["forecast-item"]}>
-                      <span>
-                        {day.date.toLocaleDateString("en", { weekday: "short" })}
-                      </span>
-                      <span>{day.icon}</span>
-                      <span>
-                        {day.high}°/{day.low}°
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
           </>
         )}
       </main>

@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime';
+import type { WeatherWarning } from './WeatherWarning';
+import {
+    WeatherWarningFromJSON,
+    WeatherWarningFromJSONTyped,
+    WeatherWarningToJSON,
+    WeatherWarningToJSONTyped,
+} from './WeatherWarning';
+
 /**
  * 
  * @export
@@ -49,7 +57,15 @@ export interface WeatherDataDto {
      * @memberof WeatherDataDto
      */
     precipitation?: number;
+    /**
+     * 
+     * @type {WeatherWarning}
+     * @memberof WeatherDataDto
+     */
+    warning?: WeatherWarning;
 }
+
+
 
 /**
  * Check if a given object implements the WeatherDataDto interface.
@@ -73,6 +89,7 @@ export function WeatherDataDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
         'humidity': json['humidity'] == null ? undefined : json['humidity'],
         'windSpeed': json['windSpeed'] == null ? undefined : json['windSpeed'],
         'precipitation': json['precipitation'] == null ? undefined : json['precipitation'],
+        'warning': json['warning'] == null ? undefined : WeatherWarningFromJSON(json['warning']),
     };
 }
 
@@ -92,6 +109,7 @@ export function WeatherDataDtoToJSONTyped(value?: WeatherDataDto | null, ignoreD
         'humidity': value['humidity'],
         'windSpeed': value['windSpeed'],
         'precipitation': value['precipitation'],
+        'warning': WeatherWarningToJSON(value['warning']),
     };
 }
 
