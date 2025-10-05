@@ -17,6 +17,8 @@ jobs:
           node-version: 20
       - name: Install dependencies
         run: npm ci
+      - name: Install react-icons
+        run: npm install react-icons
       - name: Build
         run: npm run build
         env:
