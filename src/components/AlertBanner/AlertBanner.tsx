@@ -11,6 +11,7 @@ const AlertBanner: React.FC<AlertBannerProps> = ({ message, icon = "⚠️", typ
   <div className={`${styles.banner} ${styles[type]}`}> 
     <span className={styles.icon}>{icon}</span>
     <span className={styles.message}>{message}</span>
+    <span className={styles.icon} style={{marginLeft: "1rem", marginRight: 0}}>{icon}</span>
   </div>
 );
 

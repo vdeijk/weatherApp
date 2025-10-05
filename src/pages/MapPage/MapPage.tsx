@@ -1,3 +1,4 @@
+import { forecastStore } from "../../states/forecastStore";
 
 import React, { useRef, useEffect, useState } from "react";
 import { reaction } from "mobx";
@@ -38,7 +39,8 @@ const MapClickHandler: React.FC<{
   useMapEvents({
     click: async (e) => {
       onGeocodingStart();
-      mapStore.setLocation({ lat: e.latlng.lat, lng: e.latlng.lng });
+  mapStore.setLocation({ lat: e.latlng.lat, lng: e.latlng.lng });
+  forecastStore.fetchWeatherData();
       
       try {
         const city = await reverseGeocode(e.latlng.lat, e.latlng.lng);
@@ -144,6 +146,7 @@ const MapPage: React.FC = observer(() => {
                     // Select event and update stores
                     mapStore.selectEvent(marker.id, { lat: marker.lat, lng: marker.lng });
                     inputStore.setLocation(marker.name);
+                    forecastStore.fetchWeatherData();
                   }
                 }}
               >

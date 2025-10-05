@@ -31,7 +31,7 @@ const ForecastPage: React.FC = observer(() => {
   return (
     <>
       {typeof currentWeather?.warning === "number" && currentWeather.warning !== WeatherWarning.NUMBER_0 && (
-        <AlertBanner message={warningMessages[currentWeather.warning]} type="warning" />
+  <AlertBanner message={warningMessages[currentWeather.warning]} type="warning" icon="⚠️" />
       )}
       <main className={styles["weather-content"]}>
         {loading && (
