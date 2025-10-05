@@ -1,0 +1,10 @@
+apis/ErrorApi.ts
+apis/FestivalApi.ts
+apis/WeatherApi.ts
+apis/index.ts
+index.ts
+models/FestivalDto.ts
+models/ProblemDetails.ts
+models/WeatherDataDto.ts
+models/index.ts
+runtime.ts
