@@ -57,8 +57,6 @@ class ForecastStore {
         date: dateStr,
       });
 
-      console.log("Fetched weather data:", data);
-
       this.setCurrentWeather(data);
     } catch (error) {
       this.setError("Failed to fetch weather data");

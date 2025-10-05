@@ -43,6 +43,7 @@ class EventsStore {
       const response = await fetch("http://localhost:5002/api/Festival");
       if (!response.ok) throw new Error("Network response was not ok");
       const data = await response.json();
+      console.log("Fetched events data:", data);
       // If needed, map backend DTOs to Event interface
       this.setEvents(Array.isArray(data) ? data : []);
     } catch (error) {

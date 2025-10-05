@@ -18,7 +18,6 @@ class InputStore {
 
   setLocation = (location: string) => {
     runInAction(() => {
-      console.log("location set to:", location);
       this.location = location;
       // Clear error when user types
       if (this.locationError) {
