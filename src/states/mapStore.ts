@@ -46,10 +46,10 @@ class MapStore {
 
   get eventMarkers(): MapMarker[] {
     return eventsStore.upcomingEvents.map(event => ({
-      id: event.id,
-      lat: event.lat,
-      lng: event.lng,
-      name: event.name,
+      id: event.id ?? "",
+      lat: event.lat ?? 0,
+      lng: event.lng ?? 0,
+      name: event.name ?? "",
       type: 'event' as const
     }));
   }

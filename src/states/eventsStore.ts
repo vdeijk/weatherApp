@@ -1,18 +1,12 @@
 import { makeAutoObservable } from "mobx";
+import { FestivalApi } from "../api/apis/FestivalApi";
+import { Configuration } from "../api/runtime";
+import type { FestivalDto } from "../api/models/FestivalDto";
 
-export interface Event {
-  id: string;
-  name: string;
-  date: string;
-  time: string;
-  location: string;
-  lat: number;
-  lng: number;
-  description?: string;
-}
+// Use FestivalDto from Swagger-generated models
 
 class EventsStore {
-  events: Event[] = [];
+  events: FestivalDto[] = [];
   loading = false;
   error: string | null = null;
   
@@ -31,20 +25,17 @@ class EventsStore {
     this.error = error;
   }
 
-  setEvents(events: Event[]) {
+  setEvents(events: FestivalDto[]) {
     this.events = events;
   }
 
   async fetchEvents() {
     this.setLoading(true);
     this.setError(null);
-
     try {
-      const response = await fetch("http://localhost:5002/api/Festival");
-      if (!response.ok) throw new Error("Network response was not ok");
-      const data = await response.json();
-      console.log("Fetched events data:", data);
-      // If needed, map backend DTOs to Event interface
+  const config = new Configuration({ basePath: import.meta.env.VITE_API_BASE_URL });
+      const festivalApi = new FestivalApi(config);
+      const data = await festivalApi.apiFestivalGet();
       this.setEvents(Array.isArray(data) ? data : []);
     } catch (error) {
       this.setError("Failed to load events");
