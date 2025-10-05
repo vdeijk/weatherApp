@@ -1,16 +1,19 @@
+
 import React from "react";
 import { observer } from "mobx-react-lite";
 import NavLink from "../NavLink/NavLink";
 import styles from "./NavBar.module.css";
+import { FaHome, FaMapMarkerAlt, FaCalendarAlt, FaMap, FaCloudSun } from "react-icons/fa";
+
 
 const NavBar: React.FC = observer(() => (
   <nav className={styles.navbar} aria-label="Main navigation">
     <ul className={styles.menuList}>
-      <NavLink to="">Home</NavLink>
-      <NavLink to="/input">Location & Date</NavLink>
-      <NavLink to="/map">Map</NavLink>
-      <NavLink to="/events">Upcoming Events</NavLink>
-      <NavLink to="/forecast">Forecast</NavLink>
+  <NavLink to="/" aria-label="Home"><FaHome size={24} /></NavLink>
+      <NavLink to="/input" aria-label="Location & Date"><FaCalendarAlt size={24} /></NavLink>
+      <NavLink to="/map" aria-label="Map"><FaMapMarkerAlt size={24} /></NavLink>
+      <NavLink to="/events" aria-label="Upcoming Events"><FaMap size={24} /></NavLink>
+      <NavLink to="/forecast" aria-label="Forecast"><FaCloudSun size={24} /></NavLink>
     </ul>
   </nav>
 ));
